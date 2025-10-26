@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Marconi Wireless Simulator 📡</title>
+  <style>
+    body {
+      background: #000;
+      color: #00ff99;
+      font-family: monospace;
+      text-align: center;
+      padding: 40px;
+    }
+    button {
+      margin: 10px;
+      padding: 15px 25px;
+      font-size: 20px;
+      background: #004400;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+    }
+    #receiver {
+      margin-top: 30px;
+      font-size: 24px;
+    }
+    .flash {
+      color: yellow;
+    }
+  </style>
+</head>
+<body>
+  <h1>Marconi Wireless Simulator</h1>
+  <button onclick="send('dot')">· Dot</button>
+  <button onclick="send('dash')">– Dash</button>
+  <p id="receiver">Ready to transmit...</p>
+
+  <script>
+    function send(type) {
+      const receiver = document.getElementById("receiver");
+      const signal = type === "dot" ? "·" : "–";
+      receiver.innerText = "Transmitting " + signal;
+      receiver.classList.add("flash");
+
+      // Simulate wireless delay
+      setTimeout(() => {
+        receiver.innerText = "Signal received: " + signal;
+        receiver.classList.remove("flash");
+      }, 700);
+    }
+  </script>
+</body>
+</html>
